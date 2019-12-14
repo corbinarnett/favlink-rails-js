@@ -10,7 +10,7 @@ class Api::V1::WebsitesController < ApplicationController
 
   # GET /websites/1
   def show
-    render json: @website, status: 200
+    render json: @website, include: [:list], status: 200
   end
 
   # POST /websites
