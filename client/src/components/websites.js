@@ -2,10 +2,14 @@ class Websites {
   constructor() {
     this.websites = [];
     this.adapter = new WebsitesAdapter();
-    // this.bindEventListeners()
+    this.initBindingsAndEventListeners()
     this.fetchAndLoadWebsites();
   }
 
+  initBindingsAndEventListeners() {
+    this.linkContainer = document.getElementById("savedSite-container");
+  }
+  
   fetchAndLoadWebsites() {
     this.adapter
       .getWebsites()
@@ -38,7 +42,6 @@ class Websites {
   }
 
   displayCard(website) {
-    const linkContainer = document.getElementById("savedSite-container");
-    linkContainer.innerHTML += this.websiteCard(website)
+    this.linkContainer.innerHTML += this.websiteCard(website)
   }
 }
