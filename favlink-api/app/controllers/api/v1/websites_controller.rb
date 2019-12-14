@@ -5,7 +5,7 @@ class Api::V1::WebsitesController < ApplicationController
   def index
     @websites = Website.all
 
-    render json: @websites, status: 200
+    render json: @websites, include: [:list], status: 200
   end
 
   # GET /websites/1
@@ -15,10 +15,11 @@ class Api::V1::WebsitesController < ApplicationController
 
   # POST /websites
   def create
-    @website = Website.new(website_params)
+    @list = List.find_by(title: list_params[:title])
+    @website = @list.websites.build(website_params)
 
     if @website.save
-      render json: @website, status: :created, location: @website
+      render json: @website, include: [:list], status: :created, location: @website
     else
       render json: @website.errors, status: :unprocessable_entity
     end
@@ -44,6 +45,9 @@ class Api::V1::WebsitesController < ApplicationController
       @website = Website.find(params[:id])
     end
 
+    def list_params
+      params.require(:list).permit(:title)
+    end
     # Only allow a trusted parameter "white list" through.
     def website_params
       params.require(:website).permit(:title, :link, :list_id)
