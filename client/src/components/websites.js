@@ -7,6 +7,6 @@ class Websites {
   }
 
   fetchAndLoadWebsites() {
-    this.adapter.getWebsites()
+    this.adapter.getWebsites().then(websites => console.log(websites))
   }
 }

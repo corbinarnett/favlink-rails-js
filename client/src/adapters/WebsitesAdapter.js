@@ -4,6 +4,6 @@ class WebsitesAdapter {
   }
 
   getWebsites() {
-    return fetch(this.baseUrl).then(res => console.log(res))
+    return fetch(this.baseUrl).then(res => res.json())
   }
 }
