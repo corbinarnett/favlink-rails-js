@@ -7,6 +7,16 @@ class Websites {
   }
 
   fetchAndLoadWebsites() {
-    this.adapter.getWebsites().then(websites => console.log(websites))
+    this.adapter.getWebsites().then(websites => {
+      return console.log(websites)
+    })
+    .then(() => {
+      this.render()
+    })
+  }
+
+  render() {
+    const websiteContainer = document.getElementById("savedSite-container")
+    websiteContainer.innerHTML = "My Saved Websites Here!"
   }
 }
