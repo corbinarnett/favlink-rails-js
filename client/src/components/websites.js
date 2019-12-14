@@ -8,7 +8,8 @@ class Websites {
 
   fetchAndLoadWebsites() {
     this.adapter.getWebsites().then(websites => {
-      return console.log(websites)
+      websites.forEach(website => this.websites.push(new Website(website)))
+      console.log(this.websites)
     })
     .then(() => {
       this.render()
@@ -18,5 +19,6 @@ class Websites {
   render() {
     const websiteContainer = document.getElementById("savedSite-container")
     websiteContainer.innerHTML = "My Saved Websites Here!"
+    console.log("my saved sites are", this.websites)
   }
 }
