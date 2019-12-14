@@ -9,9 +9,9 @@ class Api::V1::ListsController < ApplicationController
   end
 
   # GET /lists/1
-  # def show
-  #   render json: @list, status: 200
-  # end
+  def show
+    render json: @list, status: 200
+  end
 
   # POST /lists
   # def create
