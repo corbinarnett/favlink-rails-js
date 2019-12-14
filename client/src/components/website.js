@@ -5,10 +5,10 @@ class Website {
 // list_id: 1
 // title: "How to Upgrade Your Spritz This Summer"
   constructor(websiteJSON) {
-    this.id = websiteJSON.id
+    // this.id = websiteJSON.id
     this.title = websiteJSON.title
     this.link = websiteJSON.link
     this.listTitle = websiteJSON.list.title
-    this.listId = websiteJSON.list_id
+    // this.listId = websiteJSON.list_id
   }
 }

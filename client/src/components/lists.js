@@ -27,7 +27,7 @@ class Lists {
   listHtml(list) {
     // object: {id: 1, title: "Cocktails"} 
     return `
-    <option>${list.object.title}</option>
+    <option>${list.id}</option>
     `
   }
 

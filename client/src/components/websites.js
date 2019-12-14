@@ -10,7 +10,9 @@ class Websites {
     this.linkContainer = document.getElementById("savedSite-container");
     this.newBookmarkTitle = document.querySelector(".form-group #linkTitle");
     this.newBookmarkUrl = document.querySelector(".form-group #linkUrl");
-    this.dropdownContainer = document.querySelector(".form-group #ListControlSelect")
+    this.dropdownContainer = document.querySelector(
+      ".form-group #ListControlSelect"
+    );
     this.bookmarkForm = document.getElementById("myForm");
     this.bookmarkForm.addEventListener(
       "submit",
@@ -20,10 +22,13 @@ class Websites {
 
   createBookmark(e) {
     e.preventDefault();
-    const title = this.newBookmarkTitle.value
-    const url = this.newBookmarkUrl.value
-    const list = this.dropdownContainer.value
-    // this.adapter.createWebsite(title, url, list)
+    const title = this.newBookmarkTitle.value;
+    const url = this.newBookmarkUrl.value;
+    const list = this.dropdownContainer.value;
+    this.adapter.createWebsite(title, url, list).then(website => {
+      this.websites.push(new Website(website));
+      this.render();
+    });
   }
 
   fetchAndLoadWebsites() {

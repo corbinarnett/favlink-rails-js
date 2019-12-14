@@ -5,7 +5,7 @@ class Api::V1::WebsitesController < ApplicationController
   def index
     @websites = Website.all
 
-    render json: @websites, status: 200
+    render json: @websites, include: [:list], status: 200
   end
 
   # GET /websites/1
@@ -16,24 +16,25 @@ class Api::V1::WebsitesController < ApplicationController
   # POST /websites
   def create
     # binding.pry
-    @list = List.find_by(title: list_params[:title])
-    @website = @list.websites.build(website_params)
+    # @list = List.find_by(title: list_params[:title])
+    # @website = @list.websites.build(website_params)
+    @website = Website.new(website_params)
 
     if @website.save
-      render json: @website, status: :created, location: @website
+      render json: @website, include: [:list], status: 200
     else
       render json: @website.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /websites/1
-  def update
-    if @website.update(website_params)
-      render json: @website
-    else
-      render json: @website.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @website.update(website_params)
+  #     render json: @website
+  #   else
+  #     render json: @website.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /websites/1
   def destroy
