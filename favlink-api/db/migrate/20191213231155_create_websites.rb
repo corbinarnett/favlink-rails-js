@@ -5,7 +5,7 @@ class CreateWebsites < ActiveRecord::Migration[6.0]
       t.string :link
       t.belongs_to :list, null: false, foreign_key: true
 
-      t.timestamps
+
     end
   end
 end
