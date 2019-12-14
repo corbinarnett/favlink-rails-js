@@ -25,11 +25,14 @@ class Websites {
   websiteCard(website) {
     return `
     <div class="card bg-light">
+      <div class="card-header">
+        ${website.listTitle}
+      </div>
       <div class="card-body">
         <h3>${website.title}</h3>
-        <a class="btn btn-default"  target="_blank" href="${website.link} role="button">Visit</a>
+        <button class="btn btn-primary" onclick="window.open('${website.link}', '_blank')">Visit</button>
       </div>
-    </div>
+    </div></br>
     `
   }
 
