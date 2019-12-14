@@ -2,23 +2,26 @@ class Websites {
   constructor() {
     this.websites = [];
     this.adapter = new WebsitesAdapter();
-    this.initBindingsAndEventListeners()
+    this.initBindingsAndEventListeners();
     this.fetchAndLoadWebsites();
   }
 
   initBindingsAndEventListeners() {
     this.linkContainer = document.getElementById("savedSite-container");
-    this.newBookmarkTitle = document.querySelector(".form-group #linkTitle")
-    this.bookmarkForm = document.getElementById("myForm")
-    this.bookmarkForm.addEventListener('submit', this.createBookmark.bind(this))
+    this.newBookmarkTitle = document.querySelector(".form-group #linkTitle");
+    this.newBookmarkUrl = document.querySelector(".form-group #linkUrl");
+    this.bookmarkForm = document.getElementById("myForm");
+    this.bookmarkForm.addEventListener(
+      "submit",
+      this.createBookmark.bind(this)
+    );
   }
 
-  createBookmark(e){
-    
+  createBookmark(e) {
     e.preventDefault();
-    console.log(this.newBookmarkTitle.value)
+    console.log(this.newBookmarkTitle.value, this.newBookmarkUrl.value);
   }
-  
+
   fetchAndLoadWebsites() {
     this.adapter
       .getWebsites()
@@ -32,7 +35,7 @@ class Websites {
   }
 
   render() {
-    this.websites.forEach(website => this.displayCard(website))
+    this.websites.forEach(website => this.displayCard(website));
   }
 
   websiteCard(website) {
@@ -47,10 +50,10 @@ class Websites {
         <button type="submit" class="btn btn-danger btn-small">Delete</button>
       </div>
     </div></br>
-    `
+    `;
   }
 
   displayCard(website) {
-    this.linkContainer.innerHTML += this.websiteCard(website)
+    this.linkContainer.innerHTML += this.websiteCard(website);
   }
 }
