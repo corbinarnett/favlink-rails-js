@@ -5,38 +5,38 @@ class Api::V1::ListsController < ApplicationController
   def index
     @lists = List.all
 
-    render json: @lists
+    render json: @lists, status: 200
   end
 
   # GET /lists/1
   def show
-    render json: @list
+    render json: @list, status: 200
   end
 
   # POST /lists
-  def create
-    @list = List.new(list_params)
+  # def create
+  #   @list = List.new(list_params)
 
-    if @list.save
-      render json: @list, status: :created, location: @list
-    else
-      render json: @list.errors, status: :unprocessable_entity
-    end
-  end
+  #   if @list.save
+  #     render json: @list, status: :created, location: @list
+  #   else
+  #     render json: @list.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /lists/1
-  def update
-    if @list.update(list_params)
-      render json: @list
-    else
-      render json: @list.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @list.update(list_params)
+  #     render json: @list
+  #   else
+  #     render json: @list.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /lists/1
-  def destroy
-    @list.destroy
-  end
+  # def destroy
+  #   @list.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

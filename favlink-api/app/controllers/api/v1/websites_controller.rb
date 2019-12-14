@@ -5,12 +5,12 @@ class Api::V1::WebsitesController < ApplicationController
   def index
     @websites = Website.all
 
-    render json: @websites
+    render json: @websites, status: 200
   end
 
   # GET /websites/1
   def show
-    render json: @website
+    render json: @website, status: 200
   end
 
   # POST /websites
