@@ -30,7 +30,8 @@ class Websites {
       </div>
       <div class="card-body">
         <h3>${website.title}</h3>
-        <button class="btn btn-primary" onclick="window.open('${website.link}', '_blank')">Visit</button>
+        <button class="btn btn-primary btn-small" onclick="window.open('${website.link}', '_blank')">Visit</button>
+        <button type="submit" class="btn btn-danger btn-small">Delete</button>
       </div>
     </div></br>
     `
