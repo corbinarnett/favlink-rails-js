@@ -5,12 +5,12 @@ class Api::V1::ListsController < ApplicationController
   def index
     @lists = List.all
 
-    render json: @lists, status: 200
+    render json: @lists, include: [:websites], status: 200
   end
 
   # GET /lists/1
   def show
-    render json: @list, status: 200
+    render json: @list, include: [:websites] status: 200
   end
 
   # POST /lists
