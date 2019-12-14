@@ -8,6 +8,15 @@ class Websites {
 
   initBindingsAndEventListeners() {
     this.linkContainer = document.getElementById("savedSite-container");
+    this.newBookmarkTitle = document.querySelector(".form-group #linkTitle")
+    this.bookmarkForm = document.getElementById("myForm")
+    this.bookmarkForm.addEventListener('submit', this.createBookmark.bind(this))
+  }
+
+  createBookmark(e){
+    
+    e.preventDefault();
+    console.log(this.newBookmarkTitle.value)
   }
   
   fetchAndLoadWebsites() {
