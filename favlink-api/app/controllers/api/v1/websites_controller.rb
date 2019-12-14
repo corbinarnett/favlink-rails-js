@@ -4,13 +4,16 @@ class Api::V1::WebsitesController < ApplicationController
   # GET /websites
   def index
     @websites = Website.all
-
-    render json: @websites, include: [:list], status: 200
+    options = {}
+    options[:include] = [:list]
+    render json: WebsiteSerializer.new(@websites, options), status: 200
   end
 
   # GET /websites/1
   def show
-    render json: @website, include: [:list], status: 200
+    options = {}
+    options[:include] = [:list]
+    render json: WebsiteSerializer.new(@website, options), status: 200
   end
 
   # POST /websites
@@ -21,7 +24,7 @@ class Api::V1::WebsitesController < ApplicationController
     @website = Website.new(website_params)
 
     if @website.save
-      render json: @website, include: [:list], status: 200
+      render json: WebsiteSerializer.new(@website), status: 200
     else
       render json: @website.errors, status: :unprocessable_entity
     end

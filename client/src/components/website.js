@@ -6,9 +6,9 @@ class Website {
 // title: "How to Upgrade Your Spritz This Summer"
   constructor(websiteJSON) {
     // this.id = websiteJSON.id
-    this.title = websiteJSON.title
-    this.link = websiteJSON.link
-    this.listTitle = websiteJSON.list.title
+    // this.title = websiteJSON.title
+    // this.link = websiteJSON.link
+    // this.listTitle = websiteJSON.list.title
     // this.listId = websiteJSON.list_id
   }
 }

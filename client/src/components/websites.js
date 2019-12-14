@@ -2,7 +2,7 @@ class Websites {
   constructor() {
     this.websites = [];
     this.adapter = new WebsitesAdapter();
-    this.initBindingsAndEventListeners();
+    // this.initBindingsAndEventListeners();
     this.fetchAndLoadWebsites();
   }
 
@@ -20,23 +20,24 @@ class Websites {
     );
   }
 
-  createBookmark(e) {
-    e.preventDefault();
-    const title = this.newBookmarkTitle.value;
-    const url = this.newBookmarkUrl.value;
-    const list = this.dropdownContainer.value;
-    this.adapter.createWebsite(title, url, list).then(website => {
-      this.websites.push(new Website(website));
-      this.render();
-    });
-  }
+  // createBookmark(e) {
+  //   e.preventDefault();
+  //   const title = this.newBookmarkTitle.value;
+  //   const url = this.newBookmarkUrl.value;
+  //   const list = this.dropdownContainer.value;
+  //   this.adapter.createWebsite(title, url, list).then(website => {
+  //     this.websites.push(new Website(website));
+  //     this.render();
+  //   });
+  // }
 
   fetchAndLoadWebsites() {
     this.adapter
       .getWebsites()
       .then(websites => {
-        websites.forEach(website => this.websites.push(new Website(website)));
-        // console.log(this.websites)
+        
+        websites.data.forEach(website => this.websites.push(website));
+        debugger
       })
       .then(() => {
         this.render();
@@ -44,25 +45,26 @@ class Websites {
   }
 
   render() {
-    this.websites.forEach(website => this.displayCard(website));
+    console.log('rendering')
+    // this.websites.forEach(website => this.displayCard(website));
   }
 
-  websiteCard(website) {
-    return `
-    <div class="card bg-light">
-      <div class="card-header">
-        ${website.listTitle}
-      </div>
-      <div class="card-body">
-        <h3>${website.title}</h3>
-        <button class="btn btn-primary btn-small" onclick="window.open('${website.link}', '_blank')">Visit</button>
-        <button type="submit" class="btn btn-danger btn-small">Delete</button>
-      </div>
-    </div></br>
-    `;
-  }
+//   websiteCard(website) {
+//     return `
+//     <div class="card bg-light">
+//       <div class="card-header">
+//         ${website.listTitle}
+//       </div>
+//       <div class="card-body">
+//         <h3>${website.title}</h3>
+//         <button class="btn btn-primary btn-small" onclick="window.open('${website.link}', '_blank')">Visit</button>
+//         <button type="submit" class="btn btn-danger btn-small">Delete</button>
+//       </div>
+//     </div></br>
+//     `;
+//   }
 
-  displayCard(website) {
-    this.linkContainer.innerHTML += this.websiteCard(website);
-  }
+//   displayCard(website) {
+//     this.linkContainer.innerHTML += this.websiteCard(website);
+//   }
 }
