@@ -13,7 +13,7 @@ class Lists {
   fetchAndLoadLists() {
     this.adapter.getLists().then(lists => {
       lists.forEach(list => this.lists.push(new List(list)))
-      
+      console.log(this.lists)
     })
     .then(() => {
       this.render();
@@ -25,8 +25,9 @@ class Lists {
   }
 
   listHtml(list) {
+    // object: {id: 1, title: "Cocktails"} 
     return `
-    <option>${list.title}</option>
+    <option>${list.object.title}</option>
     `
   }
 
