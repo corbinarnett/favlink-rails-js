@@ -27,8 +27,10 @@ class Websites {
     const listId = this.dropdownContainer.value;
     // debugger
     this.adapter.createWebsite(title, url, listId).then(website => {
-      this.websites.push(new Website(website));
-      this.render();
+      // debugger
+      // console.log(website)
+      this.websites.push(new Website(website.data))
+      this.render()
     });
   }
 
@@ -47,25 +49,29 @@ class Websites {
 
   render() {
     // console.log('rendering')
-    this.websites.forEach(website => this.displayCard(website));
+    // this.websites.forEach(website => this.displayCard(website));
+    this.linkContainer.innerHTML = this.websites.map(website => website.renderCard()).join('')
+  //   debugger
   }
 
-  websiteCard(website) {
-    return `
-    <div class="card bg-light">
-      <div class="card-header" value="${website.listId}">
-        ${website.listTitle}
-      </div>
-      <div class="card-body">
-        <h3>${website.title}</h3>
-        <button class="btn btn-primary btn-small" onclick="window.open('${website.link}', '_blank')">Visit</button>
-        <button type="submit" class="btn btn-danger btn-small">Delete</button>
-      </div>
-    </div></br>
-    `;
-  }
+  // websiteCard(website) {
+  //   return `
+  //   <div class="card bg-light">
+  //     <div class="card-header" value="${website.listId}">
+  //       ${website.listTitle}
+  //     </div>
+  //     <div class="card-body">
+  //       <h3>${website.title}</h3>
+  //       <button class="btn btn-primary btn-small" onclick="window.open('${website.link}', '_blank')">Visit</button>
+  //       <button type="submit" class="btn btn-danger btn-small">Delete</button>
+  //     </div>
+  //   </div></br>
+  //   `;
+  // }
 
-  displayCard(website) {
-    this.linkContainer.innerHTML += this.websiteCard(website);
-  }
+  // displayCard(website) {
+  //   this.linkContainer.innerHTML += this.websiteCard(website);
+  // }
+
+ 
 }

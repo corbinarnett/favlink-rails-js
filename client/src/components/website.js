@@ -9,6 +9,21 @@ class Website {
     this.listTitle = websiteJSON.attributes.list.title
     this.listId = websiteJSON.attributes.list.id
   }
+
+  renderCard() {
+    return `
+    <div class="card bg-light">
+      <div class="card-header" value="${this.listId}">
+        ${this.listTitle}
+      </div>
+      <div class="card-body">
+        <h3>${this.title}</h3>
+        <button class="btn btn-primary btn-small" onclick="window.open('${this.link}', '_blank')">Visit</button>
+        <button type="submit" class="btn btn-danger btn-small">Delete</button>
+      </div>
+    </div></br>
+    `;
+  }
 }
 
 
