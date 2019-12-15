@@ -35,7 +35,7 @@ class Websites {
     this.adapter
       .getWebsites()
       .then(websites => {
-        
+        console.log(websites)
         websites.data.forEach(website => this.websites.push(website));
         debugger
       })

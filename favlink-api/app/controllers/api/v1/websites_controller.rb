@@ -4,16 +4,16 @@ class Api::V1::WebsitesController < ApplicationController
   # GET /websites
   def index
     @websites = Website.all
-    options = {}
-    options[:include] = [:list]
-    render json: WebsiteSerializer.new(@websites, options), status: 200
+    # options = {}
+    # options[:include] = [:list]
+    render json: WebsiteSerializer.new(@websites), status: 200
   end
 
   # GET /websites/1
   def show
-    options = {}
-    options[:include] = [:list]
-    render json: WebsiteSerializer.new(@website, options), status: 200
+    # options = {}
+    # options[:include] = [:list]
+    render json: WebsiteSerializer.new(@website), status: 200
   end
 
   # POST /websites
