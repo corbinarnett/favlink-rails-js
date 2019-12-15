@@ -27,19 +27,6 @@ class Websites {
 
   }
 
-  // deleteFromCard() {
-  //   this.cardBody = document.querySelectorAll('div.card-body');
-  //   for (let i = 0 ; i < this.cardBody.length; i++) {
-  //     this.cardBody[i].addEventListener('submit' , this.deleteBookmark.bind(this)) ; 
-  //  }
-  //  debugger
-  // }
-
-
-
-
-
-
   createBookmark(e) {
     e.preventDefault();
     const title = this.newBookmarkTitle.value;
