@@ -1,11 +1,13 @@
 class Website {
 
   constructor(websiteJSON) {
+    this.title = websiteJSON.attributes.title
+    this.link = websiteJSON.attributes.link
     // this.id = websiteJSON.id
     // this.title = websiteJSON.title
     // this.link = websiteJSON.link
-    // this.listTitle = websiteJSON.list.title
-    // this.listId = websiteJSON.list_id
+    this.listTitle = websiteJSON.attributes.list.title
+    this.listId = websiteJSON.attributes.list.id
   }
 }
 
