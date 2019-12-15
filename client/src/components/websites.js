@@ -2,7 +2,7 @@ class Websites {
   constructor() {
     this.websites = [];
     this.adapter = new WebsitesAdapter();
-    // this.initBindingsAndEventListeners();
+    this.initBindingsAndEventListeners();
     this.fetchAndLoadWebsites();
   }
 
@@ -13,11 +13,11 @@ class Websites {
     this.dropdownContainer = document.querySelector(
       ".form-group #ListControlSelect"
     );
-    this.bookmarkForm = document.getElementById("myForm");
-    this.bookmarkForm.addEventListener(
-      "submit",
-      this.createBookmark.bind(this)
-    );
+    // this.bookmarkForm = document.getElementById("myForm");
+    // this.bookmarkForm.addEventListener(
+    //   "submit",
+    //   this.createBookmark.bind(this)
+    // );
   }
 
   // createBookmark(e) {
@@ -45,26 +45,26 @@ class Websites {
   }
 
   render() {
-    console.log('rendering')
-    // this.websites.forEach(website => this.displayCard(website));
+    // console.log('rendering')
+    this.websites.forEach(website => this.displayCard(website));
   }
 
-//   websiteCard(website) {
-//     return `
-//     <div class="card bg-light">
-//       <div class="card-header">
-//         ${website.listTitle}
-//       </div>
-//       <div class="card-body">
-//         <h3>${website.title}</h3>
-//         <button class="btn btn-primary btn-small" onclick="window.open('${website.link}', '_blank')">Visit</button>
-//         <button type="submit" class="btn btn-danger btn-small">Delete</button>
-//       </div>
-//     </div></br>
-//     `;
-//   }
+  websiteCard(website) {
+    return `
+    <div class="card bg-light">
+      <div class="card-header" value="${website.listId}">
+        ${website.listTitle}
+      </div>
+      <div class="card-body">
+        <h3>${website.title}</h3>
+        <button class="btn btn-primary btn-small" onclick="window.open('${website.link}', '_blank')">Visit</button>
+        <button type="submit" class="btn btn-danger btn-small">Delete</button>
+      </div>
+    </div></br>
+    `;
+  }
 
-//   displayCard(website) {
-//     this.linkContainer.innerHTML += this.websiteCard(website);
-//   }
+  displayCard(website) {
+    this.linkContainer.innerHTML += this.websiteCard(website);
+  }
 }
