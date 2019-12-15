@@ -50,9 +50,9 @@ class Api::V1::WebsitesController < ApplicationController
       @website = Website.find(params[:id])
     end
 
-    def list_params
-      params.require(:list).permit(:title)
-    end
+    # def list_params
+    #   params.require(:list).permit(:title)
+    # end
     # Only allow a trusted parameter "white list" through.
     def website_params
       params.require(:website).permit(:title, :link, :list_id)

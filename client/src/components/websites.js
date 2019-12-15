@@ -13,23 +13,24 @@ class Websites {
     this.dropdownContainer = document.querySelector(
       ".form-group #ListControlSelect"
     );
-    // this.bookmarkForm = document.getElementById("myForm");
-    // this.bookmarkForm.addEventListener(
-    //   "submit",
-    //   this.createBookmark.bind(this)
-    // );
+    this.bookmarkForm = document.getElementById("myForm");
+    this.bookmarkForm.addEventListener(
+      "submit",
+      this.createBookmark.bind(this)
+    );
   }
 
-  // createBookmark(e) {
-  //   e.preventDefault();
-  //   const title = this.newBookmarkTitle.value;
-  //   const url = this.newBookmarkUrl.value;
-  //   const list = this.dropdownContainer.value;
-  //   this.adapter.createWebsite(title, url, list).then(website => {
-  //     this.websites.push(new Website(website));
-  //     this.render();
-  //   });
-  // }
+  createBookmark(e) {
+    e.preventDefault();
+    const title = this.newBookmarkTitle.value;
+    const url = this.newBookmarkUrl.value;
+    const listId = this.dropdownContainer.value;
+    // debugger
+    this.adapter.createWebsite(title, url, listId).then(website => {
+      this.websites.push(new Website(website));
+      this.render();
+    });
+  }
 
   fetchAndLoadWebsites() {
     this.adapter
