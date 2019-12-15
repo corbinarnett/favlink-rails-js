@@ -6,7 +6,9 @@ class Websites {
     this.initBindingsAndEventListeners();
   }
 
+
   initBindingsAndEventListeners() {
+    
     // saved link container
     this.linkContainer = document.getElementById("savedSite-container");
     // form 
@@ -23,18 +25,15 @@ class Websites {
       this.createBookmark.bind(this)
     );
 
-    // delete website
-     this.cardBody = document.querySelectorAll('div.card-body');
-    for (let i = 0 ; i < this.cardBody.length; i++) {
-      this.cardBody[i].addEventListener('submit' , this.deleteBookmark.bind(this)) ; 
-   }
-   debugger
   }
 
-  deleteBookmark(e) {
-    // e.preventDefault();
-    debugger
-  }
+  // deleteFromCard() {
+  //   this.cardBody = document.querySelectorAll('div.card-body');
+  //   for (let i = 0 ; i < this.cardBody.length; i++) {
+  //     this.cardBody[i].addEventListener('submit' , this.deleteBookmark.bind(this)) ; 
+  //  }
+  //  debugger
+  // }
 
 
 
@@ -66,9 +65,39 @@ class Websites {
       });
   }
 
+  // render() {
+  //   this.linkContainer.innerHTML = this.websites
+  //     .map(website => website.renderCard())
+  //     .join("");
+  // }
+
   render() {
     this.linkContainer.innerHTML = this.websites
-      .map(website => website.renderCard())
+      .map(website => { return `
+      <div class="card bg-light">
+        <div class="card-header">
+          ${website.listTitle}
+        </div>
+        <div class="card-body">
+          <h3 value="${website.id}">${website.title}</h3>
+          <button class="btn btn-primary btn-small" onclick="window.open('${website.link}', '_blank')">Visit</button>
+          <button onclick="Websites.deleteFromCard(${website.id})" class="btn btn-danger btn-small">Delete</button>
+        </div>
+      </div></br>
+      ` })
       .join("");
+  }
+
+  static deleteFromCard(id) {
+    alert(id)
+    // debugger
+    return fetch("http://localhost:3000/api/v1/websites" + "/" + id, {
+          method: 'delete',
+          headers: {
+            'Accept': 'application/json',
+            'content-type': 'application/json',
+          },
+        }).then(res => console.log(res))
+    // WebsitesAdapter.deleteData(id)
   }
 }
