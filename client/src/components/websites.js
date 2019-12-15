@@ -2,35 +2,54 @@ class Websites {
   constructor() {
     this.websites = [];
     this.adapter = new WebsitesAdapter();
-    this.initBindingsAndEventListeners();
     this.fetchAndLoadWebsites();
+    this.initBindingsAndEventListeners();
   }
 
   initBindingsAndEventListeners() {
+    // saved link container
     this.linkContainer = document.getElementById("savedSite-container");
+    // form 
     this.newBookmarkTitle = document.querySelector(".form-group #linkTitle");
     this.newBookmarkUrl = document.querySelector(".form-group #linkUrl");
     this.dropdownContainer = document.querySelector(
       ".form-group #ListControlSelect"
     );
+
+    // create new website
     this.bookmarkForm = document.getElementById("myForm");
     this.bookmarkForm.addEventListener(
       "submit",
       this.createBookmark.bind(this)
     );
+
+    // delete website
+     this.cardBody = document.querySelectorAll('div.card-body');
+    for (let i = 0 ; i < this.cardBody.length; i++) {
+      this.cardBody[i].addEventListener('submit' , this.deleteBookmark.bind(this)) ; 
+   }
+   debugger
   }
+
+  deleteBookmark(e) {
+    // e.preventDefault();
+    debugger
+  }
+
+
+
+
+
 
   createBookmark(e) {
     e.preventDefault();
     const title = this.newBookmarkTitle.value;
     const url = this.newBookmarkUrl.value;
     const listId = this.dropdownContainer.value;
-    // debugger
+
     this.adapter.createWebsite(title, url, listId).then(website => {
-      // debugger
-      // console.log(website)
-      this.websites.push(new Website(website.data))
-      this.render()
+      this.websites.push(new Website(website.data));
+      this.render();
     });
   }
 
@@ -38,9 +57,9 @@ class Websites {
     this.adapter
       .getWebsites()
       .then(websites => {
-        // console.log(websites)
-        websites.data.forEach(website => this.websites.push(new Website(website)));
-        // debugger
+        websites.data.forEach(website =>
+          this.websites.push(new Website(website))
+        );
       })
       .then(() => {
         this.render();
@@ -48,30 +67,8 @@ class Websites {
   }
 
   render() {
-    // console.log('rendering')
-    // this.websites.forEach(website => this.displayCard(website));
-    this.linkContainer.innerHTML = this.websites.map(website => website.renderCard()).join('')
-  //   debugger
+    this.linkContainer.innerHTML = this.websites
+      .map(website => website.renderCard())
+      .join("");
   }
-
-  // websiteCard(website) {
-  //   return `
-  //   <div class="card bg-light">
-  //     <div class="card-header" value="${website.listId}">
-  //       ${website.listTitle}
-  //     </div>
-  //     <div class="card-body">
-  //       <h3>${website.title}</h3>
-  //       <button class="btn btn-primary btn-small" onclick="window.open('${website.link}', '_blank')">Visit</button>
-  //       <button type="submit" class="btn btn-danger btn-small">Delete</button>
-  //     </div>
-  //   </div></br>
-  //   `;
-  // }
-
-  // displayCard(website) {
-  //   this.linkContainer.innerHTML += this.websiteCard(website);
-  // }
-
- 
 }

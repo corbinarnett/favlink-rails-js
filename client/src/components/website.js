@@ -3,7 +3,7 @@ class Website {
   constructor(websiteJSON) {
     this.title = websiteJSON.attributes.title
     this.link = websiteJSON.attributes.link
-    // this.id = websiteJSON.id
+    this.id = websiteJSON.id
     // this.title = websiteJSON.title
     // this.link = websiteJSON.link
     this.listTitle = websiteJSON.attributes.list.title
@@ -17,7 +17,7 @@ class Website {
         ${this.listTitle}
       </div>
       <div class="card-body">
-        <h3>${this.title}</h3>
+        <h3 value="${this.id}">${this.title}</h3>
         <button class="btn btn-primary btn-small" onclick="window.open('${this.link}', '_blank')">Visit</button>
         <button type="submit" class="btn btn-danger btn-small">Delete</button>
       </div>
