@@ -12,7 +12,7 @@ class Website {
 
   renderCard() {
     return `
-    <div class="card bg-light">
+    <div class="card bg-light" id="card-${this.id}">
       <div class="card-header">
         ${this.listTitle}
       </div>

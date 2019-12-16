@@ -33,8 +33,10 @@ class Websites {
   }
 
   deleteBookmark(id) {
-    this.adapter.deleteWebsite(id)
-    
+    this.adapter.deleteWebsite(id).then(function(){
+      let cardDiv = document.getElementById("card-" + id);
+      cardDiv.parentElement.removeChild(cardDiv);
+    })
     // this.render();
     
   }
