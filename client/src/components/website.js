@@ -4,8 +4,6 @@ class Website {
     this.title = websiteJSON.attributes.title
     this.link = websiteJSON.attributes.link
     this.id = websiteJSON.id
-    // this.title = websiteJSON.title
-    // this.link = websiteJSON.link
     this.listTitle = websiteJSON.attributes.list.title
     this.listId = websiteJSON.attributes.list.id
   }
@@ -25,14 +23,6 @@ class Website {
     `;
   }
 
-  // static deleteFromCard(id) {
-  //   alert('delete')
-  //   // debugger
-  //   return fetch("http://localhost:3000/api/v1/websites" + "/" + id, {
-  //         method: 'delete'
-  //       }).then(() => Websites.render())
-  //   // WebsitesAdapter.deleteData(id)
-  // }
 }
 
 

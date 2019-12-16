@@ -5,7 +5,6 @@ class WebsitesAdapter {
 
   getWebsites() {
     return fetch(this.baseUrl).then(res => res.json())
-    // debugger
   }
 
   createWebsite(title, url, listId) {
@@ -35,14 +34,6 @@ class WebsitesAdapter {
       })
     }
 
-
-
-  // static deleteData(id) {
-  //   return fetch(this.baseUrl + "/" + id, {
-  //     method: 'delete'
-  //   }).then(() => console.log('removed'))
-
-  // }
 }
 
 
