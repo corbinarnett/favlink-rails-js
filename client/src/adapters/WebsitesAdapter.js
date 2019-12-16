@@ -25,6 +25,13 @@ class WebsitesAdapter {
     .then(res => res.json())
   }
 
+  deleteWebsite(id) {
+      return fetch(this.baseUrl + "/" + id, {
+        method: 'delete'
+      }).then(response =>
+        console.log(response))
+    }
+
 
 
   // static deleteData(id) {

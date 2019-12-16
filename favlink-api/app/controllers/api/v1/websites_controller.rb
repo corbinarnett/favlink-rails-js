@@ -41,7 +41,7 @@ class Api::V1::WebsitesController < ApplicationController
 
   # DELETE /websites/1
   def destroy
-    binding.pry
+    # binding.pry
     @website.destroy
   end
 
