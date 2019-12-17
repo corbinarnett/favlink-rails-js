@@ -4,13 +4,17 @@ Favlink is a SPA that bookmarks your favorite webpages. It is built on a Rails A
 
 ## Usage
 To run Favlink, fork and clone this repository onto your machine. While in the favlink-api folder, run the following commands to prepare the database and load the required Ruby gems:
+```
 $bundle 
 $rails db:create
 $rails db:migrate
 $rails db:seed
+```
 
 You will also need to run 
+```
 $ rails s
+```
 while in the favlink-api directory to get your back-end server running.
 
 From the root directory, run the front end pages on a local server via your preferred method.
