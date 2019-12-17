@@ -11,6 +11,7 @@ class Websites {
     
     // saved link container
     this.linkContainer = document.getElementById("savedSite-container");
+    
     // form 
     this.newBookmarkTitle = document.querySelector(".form-group #linkTitle");
     this.newBookmarkUrl = document.querySelector(".form-group #linkUrl");
@@ -49,6 +50,11 @@ class Websites {
 
     this.adapter.createWebsite(title, url, listId).then(website => {
       this.websites.push(new Website(website.data));
+      // clear form
+      // this.newBookmarkTitle.value = '';
+      // this.newBookmarkUrl.value = '';
+
+      // render newly created card
       this.render();
     });
   }
