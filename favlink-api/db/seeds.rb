@@ -6,9 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-List.create([{title: "Cocktails"}, {title: "Recipes"}, {title: "Javascript"}])
+List.create([{title: "Books"}, {title: "Cocktails"}, 
+  {title: "Coding"},{title: "Design"}, {title: "Fitness"},
+  {title: "Food"}, {title: "Money"}, {title: "Music"}, {title: "Productivity"},
+  {title: "Products"}, {title: "Style"},{title: "Tech"}, {title: "Travel"}])
 
-Website.create([{title: "How to Upgrade Your Spritz This Summer", link: "https://www.bonappetit.com/story/upgrade-your-spritz#intcid=recommendations_bon-appetit-riser-similar_9df2b699-0355-4fb2-a0d7-d3071c0c0f19_cral2-2", list_id: 1},
-  {title: "Spaghetti with No-Cook Puttanesca", link: "https://www.bonappetit.com/recipe/spaghetti-with-no-cook-puttanesca", list_id: 2},
-  {title: "Eloquent JavaScript", link: "https://eloquentjavascript.net/", list_id: 3}
-  ])
