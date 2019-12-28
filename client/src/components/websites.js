@@ -40,11 +40,16 @@ class Websites {
     })
     // debugger
     // delete saved bookmark not only from db but also from the this.websites array
-    for (let i=0; i < this.websites.length; i++) {
+    // for (let i=0; i < this.websites.length; i++) {
+    //   if (this.websites[i].id === index) {
+    //       this.websites.splice(i, 1);
+    //   }
+    // }
+    this.websites.forEach(i => {
       if (this.websites[i].id === index) {
-          this.websites.splice(i, 1);
+        this.websites.splice(i, 1);
       }
-    }
+    })
   }
 
   createBookmark(e) {
