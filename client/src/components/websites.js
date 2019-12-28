@@ -33,16 +33,18 @@ class Websites {
 
   }
 
-  deleteBookmark(id) {
-    this.adapter.deleteWebsite(id).then(function(){
-      let cardDiv = document.getElementById("card-" + id);
+  deleteBookmark(index) {
+    this.adapter.deleteWebsite(index).then(function(){
+      let cardDiv = document.getElementById("card-" + index);
       cardDiv.parentElement.removeChild(cardDiv);
     })
     // debugger
-
-    // delete saved bookmark not only from db but also this.websites array
-    this.websites.splice( this.websites.indexOf(id - 1), 1 );
-    
+    // delete saved bookmark not only from db but also from the this.websites array
+    for (let i=0; i < this.websites.length; i++) {
+      if (this.websites[i].id === index) {
+          this.websites.splice(i, 1);
+      }
+    }
   }
 
   createBookmark(e) {
