@@ -8,6 +8,6 @@
 
 List.create([{title: "Books"}, {title: "Cocktails"}, 
   {title: "Coding"},{title: "Design"}, {title: "Fitness"},
-  {title: "Food"}, {title: "Money"}, {title: "Music"}, {title: "Productivity"},
+  {title: "Recipes"}, {title: "Money"}, {title: "Music"}, {title: "Productivity"},
   {title: "Products"}, {title: "Style"},{title: "Tech"}, {title: "Travel"}])
 

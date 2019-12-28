@@ -38,7 +38,10 @@ class Websites {
       let cardDiv = document.getElementById("card-" + id);
       cardDiv.parentElement.removeChild(cardDiv);
     })
-    // this.render();
+    // debugger
+
+    // delete saved bookmark not only from db but also this.websites array
+    this.websites.splice( this.websites.indexOf(id - 1), 1 );
     
   }
 
@@ -50,9 +53,10 @@ class Websites {
 
     this.adapter.createWebsite(title, url, listId).then(website => {
       this.websites.push(new Website(website.data));
+      
       // clear form
-      // this.newBookmarkTitle.value = '';
-      // this.newBookmarkUrl.value = '';
+      this.newBookmarkTitle.value = '';
+      this.newBookmarkUrl.value = '';
 
       // render newly created card
       this.render();
@@ -66,6 +70,7 @@ class Websites {
         websites.data.forEach(website =>
           this.websites.push(new Website(website))
         );
+        debugger
       })
       .then(() => {
         this.render();
